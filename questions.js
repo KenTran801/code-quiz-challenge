@@ -2,6 +2,37 @@
 
 
 // Create questions for the quiz (arrays)
+var questions = [
+    {
+        questionText: "Question 1: Commonly used data types DO NOT include which of the following.",
+        answerOptions: ["Booleans", "Numbers", "Strings", "Alerts"],
+        correctAnswer: "Alerts"
+    },
+
+    {
+        questionText: "Question 2: The condition in an if / else statement is enclosed within ______.",
+        answerOptions: ["Curly Brackets", "Quotes", "Parentheses", "Square Brackets"],
+        correctAnswer: "Parentheses"
+    },
+
+    {
+        questionText: "Question 3: Arrays in Javascript can be used to store ______.",
+        answerOptions: ["Numbers and strings", "Other arrays", "Booleans", "All of the above"],
+        correctAnswer: "All of the above"
+    },
+
+    {
+        questionText: "Question 4: String values must be enclosed within ______ when being assigned to variables.",
+        answerOptions: ["Curly Brackets", "Quotes", "Commas", "Parentheses"],
+        correctAnswer: "Quotes"
+    },
+
+    {
+        questionText: "Question 5: A very useful tool used during development and debugging for printing content to the debugger is.",
+        answerOptions: ["Javascript", "Terminal/Bash", "For loops", "Console log"],
+        correctAnswer: "Console log"
+    },
+];
 
 // Setup timer
 
@@ -10,4 +41,4 @@
 
 
 
-// Functiom tp generate questions and answer choices
+// Function to generate questions and answerOptions
