@@ -1,6 +1,8 @@
 // Create variables
 var questionsIndex = 0;
-var startQuiz = document.querySelector("#startQuizBtn")
+var startQuiz = document.querySelector("#startQuizBtn");
+var quizQuestionsEl = document.querySelector("#quizQuestions");
+var quizChoicesEl = document.querySelector("#quizChoices");
 
 // Create questions for the quiz (arrays)
 var quizQuestions = [
@@ -51,8 +53,8 @@ function genQuiz () {
 
     for (let i = 0; i < quizQuestions.length; i++) {
         var userQuestion = quizQuestions[questionsIndex].questionText;
-        var userOptions = questionsIndex[questionsIndex].answerOptions;
-        
-        
+        // var userOptions = questionsIndex[questionsIndex].answerOptions;
+        quizQuestionsEl.innerHTML = userQuestion;
+        console.log(userQuestion)
     }
 };
