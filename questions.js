@@ -1,8 +1,9 @@
 // Create variables
-
+var questionsIndex = 0;
+var startQuiz = document.querySelector("#startQuizBtn")
 
 // Create questions for the quiz (arrays)
-var questions = [
+var quizQuestions = [
     {
         questionText: "Question 1: Commonly used data types DO NOT include which of the following.",
         answerOptions: ["Booleans", "Numbers", "Strings", "Alerts"],
@@ -38,7 +39,20 @@ var questions = [
 
 
 // When start button is clicked begin quiz
+startQuiz.addEventListener("click", function () {
+    genQuiz()
+});
 
 
 
 // Function to generate questions and answerOptions
+function genQuiz () {
+    introPage.innerHTML = "";
+
+    for (let i = 0; i < quizQuestions.length; i++) {
+        var userQuestion = quizQuestions[questionsIndex].questionText;
+        var userOptions = questionsIndex[questionsIndex].answerOptions;
+        
+        
+    }
+};

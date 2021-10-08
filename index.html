@@ -31,16 +31,23 @@
 
     <!-- Container that will contain questions/answers generated from javascript -->
     <main class="container-fluid my-5">
-        <div class="p-5 bg-dark border rounded-4 text-white text-center">
-            <h1 class="display-4">Coding Quiz Challenge</h1>
-            <hr class="my-5">
-            <p class="fs-5">Answer the following code related questions within the 60 second time limit. Compete against
-                your peers to see who has the highest score. Incorrect asnweres will penalize your score/time. Good luck!
-            </p>
-            <button class="btn btn-outline-light" type="button">Start Quiz</button>
+        <div id="introPage">
+            <div class="p-5 bg-dark border rounded-4 text-white text-center">
+                <h1 class="display-4">Coding Quiz Challenge</h1>
+                <hr class="my-5">
+                <p class="fs-5">Answer the following code related questions within the 60 second time limit. Compete
+                    against
+                    your peers to see who has the highest score. Incorrect asnweres will penalize your score/time. Good
+                    luck!
+                </p>
+                <button class="btn btn-outline-light" type="button" id="startQuizBtn">Start Quiz</button>
+            </div>
         </div>
-
+        <h2 class="font-weight-bold text-center" id="quizQuestions"></h2>
+        <div class="text-center" id="quizChoices"></div>
     </main>
+
+    <script src="questions.js"></script>
 
 </body>
 
