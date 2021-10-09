@@ -8,6 +8,8 @@ var buttonDiv = document.createElement("div");
 var remainTimeElement = document.querySelector("#remainTime");
 var resultDisplayElement = document.querySelector("#resultDisplay");
 var completedQuizElement = document.querySelector("#completedQuiz");
+var enterNameElement = document.querySelector("#enterNameDisplay");
+
 // Create questions for the quiz (arrays)
 var quizQuestions = [
     {
@@ -42,7 +44,7 @@ var quizQuestions = [
 ];
 
 // Setup timer
-var countdown = quizQuestions.length * 5;
+var countdown = quizQuestions.length * 10;
 var quizStarted = false;
 var timer = setInterval(function () {
     // When quiz starts the tiemr will begin
@@ -85,7 +87,7 @@ function genQuiz() {
         var userQuestion = quizQuestions[questionsIndex].questionText;
         var userOptions = quizQuestions[questionsIndex].answerOptions;
     };
-    // Adding elements to the question text
+    // Adding elements to create the question text
     questionHeader = document.createElement("h1");
     questionHeader.textContent = userQuestion;
     introPage.appendChild(questionDiv);
@@ -132,12 +134,21 @@ function genQuiz() {
                 // User score = the timer count
                 totalScore = countdown;
                 // create message to display score
-                var scoreBoard = document.createElement("h2");
-                scoreBoard.setAttribute("id", "scoreBoard");
-                scoreBoard.setAttribute("style", "color: white; font-weight: bold; padding: 25px");
-                scoreBoard.textContent =("Your final score is " + totalScore);
-                completedQuizElement.appendChild(scoreBoard);
+                var scoreDisplay = document.createElement("h2");
+                scoreDisplay.setAttribute("id", "score-display");
+                scoreDisplay.setAttribute("style", "color: white; font-weight: bold; padding: 25px");
+                scoreDisplay.textContent =("Your final score is " + totalScore);
+                completedQuizElement.appendChild(scoreDisplay);
+                // Create form field to allow user to input name or initals
+                enterNameElement.textContent = ("Please enter in your initials: ");
+                var nameInput = document.createElement("input");
+                nameInput.setAttribute("id", "name-input");
+                nameInput.setAttribute("type", "text");
+                nameInput.textContent = "";
+                enterNameElement.appendChild(nameInput);
 
+
+                // create button to submit the name or initials
 
             } else {
                 genQuiz();
