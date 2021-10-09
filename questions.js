@@ -3,7 +3,7 @@ var questionsIndex = 0;
 var startQuiz = document.querySelector("#startQuizBtn");
 var quizQuestionsElement = document.querySelector("#quizQuestions");
 var quizChoicesElement = document.querySelector("#quizChoices");
-var buttonEl = document.createElement("div");
+var buttonDiv = document.createElement("div");
 
 // Create questions for the quiz (arrays)
 var quizQuestions = [
@@ -57,15 +57,14 @@ function genQuiz() {
         var userQuestion = quizQuestions[questionsIndex].questionText;
         var userOptions = quizQuestions[questionsIndex].answerOptions;
         quizQuestionsElement.innerHTML = userQuestion;
-        console.log(userQuestion)
     }
     // Create the buttons that will contain the answer options from the array
     userOptions.forEach(function (newItem) {
         var buttonOption = document.createElement("button");
         buttonOption.setAttribute("class", "answer-option-btn");
-        buttonOption.setAttribute("style", "background: rgb(142, 159, 177); padding: 15px; color: white; margin: 25px 15px")
+        buttonOption.setAttribute("style", "background: rgb(142, 159, 177); padding: 15px; color: white; margin: 25px 15px");
         buttonOption.textContent = newItem;
-        quizQuestionsElement.appendChild(buttonEl);
-        buttonEl.appendChild(buttonOption);
+        quizQuestionsElement.appendChild(buttonDiv);
+        buttonDiv.appendChild(buttonOption);
     });
 };
