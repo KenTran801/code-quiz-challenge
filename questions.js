@@ -2,16 +2,11 @@
 var questionsIndex = 0;
 var correctScore = 0;
 var startQuiz = document.querySelector("#startQuizBtn");
-// var quizQuestionsElement = document.querySelector("#quiz-questions");
-// var quizChoicesElement = document.querySelector("#quizChoices");
 var questionDiv = document.createElement("div");
 var buttonDiv = document.createElement("div");
 var remainTimeElement = document.querySelector("#remainTime");
 var resultDisplayElement = document.querySelector("#resultDisplay");
 var completedQuizElement = document.querySelector("#completedQuiz");
-
-
-
 // Create questions for the quiz (arrays)
 var quizQuestions = [
     {
@@ -89,7 +84,6 @@ function genQuiz() {
     for (var i = 0; i < quizQuestions.length; i++) {
         var userQuestion = quizQuestions[questionsIndex].questionText;
         var userOptions = quizQuestions[questionsIndex].answerOptions;
-        // quizQuestionsElement.innerHTML = userQuestion;
     };
     // Adding elements to the question text
     questionHeader = document.createElement("h1");
@@ -109,13 +103,12 @@ function genQuiz() {
     document.querySelectorAll(".answer-option-btn").forEach(function (verifyAnswer) {
         verifyAnswer.addEventListener("click", function () {
             let userSelection = verifyAnswer.innerText;
-            // Verify if the user selects the correct asnwer
+            // Verify if the user selects the correct answer
             if (userSelection === quizQuestions[questionsIndex].correctAnswer) {
                 questionsIndex++;
                 correctScore++;
                 questionDiv.innerHTML = "";
                 buttonDiv.innerHTML = "";
-                introPage.appendChild(resultP);
                 resultDisplayElement.textContent = ("The previous answer was correct!");
             }
             // If the user selects incorrectly remove 10 seconds off the time
@@ -124,7 +117,6 @@ function genQuiz() {
                 questionsIndex++;
                 questionDiv.innerHTML = "";
                 buttonDiv.innerHTML = "";
-                introPage.appendChild(resultP);
                 resultDisplayElement.textContent = ("The previous answer was incorrect.");
             }
             if (questionsIndex >= quizQuestions.length) {
@@ -133,6 +125,8 @@ function genQuiz() {
                 resultDisplayElement.innerHTML = "";
                 resultDisplayElement.textContent = "";
                 remainTimeElement.textContent = "";
+                // Message for user when quiz has been completed successfully and display how many correct asnwers
+                completedQuizElement.textContent = ("The quiz has been completed! You answered " + correctScore + " questions correctly.");
             } else {
                 genQuiz();
             }
