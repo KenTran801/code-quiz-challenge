@@ -1,8 +1,9 @@
 // Create variables
 var questionsIndex = 0;
 var startQuiz = document.querySelector("#startQuizBtn");
-var quizQuestionsEl = document.querySelector("#quizQuestions");
-var quizChoicesEl = document.querySelector("#quizChoices");
+var quizQuestionsElement = document.querySelector("#quizQuestions");
+var quizChoicesElement = document.querySelector("#quizChoices");
+var buttonEl = document.createElement("div");
 
 // Create questions for the quiz (arrays)
 var quizQuestions = [
@@ -48,13 +49,23 @@ startQuiz.addEventListener("click", function () {
 
 
 // Function to generate questions and answerOptions
-function genQuiz () {
+function genQuiz() {
+    // Clear the intro header and text
     introPage.innerHTML = "";
-
+    // For loop that will pull in all the questions and choices
     for (let i = 0; i < quizQuestions.length; i++) {
         var userQuestion = quizQuestions[questionsIndex].questionText;
-        // var userOptions = questionsIndex[questionsIndex].answerOptions;
-        quizQuestionsEl.innerHTML = userQuestion;
+        var userOptions = quizQuestions[questionsIndex].answerOptions;
+        quizQuestionsElement.innerHTML = userQuestion;
         console.log(userQuestion)
     }
+    // Create the buttons that will contain the answer options from the array
+    userOptions.forEach(function (newItem) {
+        var buttonOption = document.createElement("button");
+        buttonOption.setAttribute("class", "answer-option-btn");
+        buttonOption.setAttribute("style", "background: rgb(142, 159, 177); padding: 15px; color: white; margin: 25px 15px")
+        buttonOption.textContent = newItem;
+        quizQuestionsElement.appendChild(buttonEl);
+        buttonEl.appendChild(buttonOption);
+    });
 };
