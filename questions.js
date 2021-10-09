@@ -6,8 +6,10 @@ var startQuiz = document.querySelector("#startQuizBtn");
 // var quizChoicesElement = document.querySelector("#quizChoices");
 var questionDiv = document.createElement("div");
 var buttonDiv = document.createElement("div");
-var resultDiv = document.createElement("div");
+var resultP = document.createElement("p");
 var remainTimeElement = document.querySelector("#remainTime");
+var resultDisplayElement = document.querySelector("#resultDisplay");
+
 
 // Create questions for the quiz (arrays)
 var quizQuestions = [
@@ -52,6 +54,10 @@ var timer = setInterval(function () {
         remainTimeElement.textContent = "Time remaining = " + countdown + " seconds";
         if (countdown <= 0) {
             clearInterval(timer);
+            questionDiv.innerHTML = "";
+            buttonDiv.innerHTML = "";
+            resultDisplayElement.innerHTML = "";
+            remainTimeElement.textContent;
 
         }
     }
@@ -94,18 +100,28 @@ function genQuiz() {
             // Verify if the user selects the correct asnwer
             if (userSelection === quizQuestions[questionsIndex].correctAnswer) {
                 questionsIndex++;
+                correctScore++;
                 questionDiv.innerHTML = "";
                 buttonDiv.innerHTML = "";
+                introPage.appendChild(resultP);
+                resultP.textContent = ("Your previous selection was correct!");
+                resultDisplayElement.textContent = ("The previous answer was correct!");
             }
             else {
                 countdown = countdown - 10;
                 questionsIndex++;
                 questionDiv.innerHTML = "";
                 buttonDiv.innerHTML = "";
+                introPage.appendChild(resultP);
+                resultP.textContent = ("Your previous selection was incorrect.")
+                resultDisplayElement.textContent = ("The previous answer was incorrect.");
             }
             if (questionsIndex >= quizQuestions.length) {
                 questionDiv.innerHTML = "";
                 buttonDiv.innerHTML = "";
+                resultDisplayElement.innerHTML = "";
+                resultDisplayElement.textContent = "";
+                remainTimeElement.textContent = "";
             } else {
                 genQuiz();
             }
