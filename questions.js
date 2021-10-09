@@ -6,9 +6,10 @@ var startQuiz = document.querySelector("#startQuizBtn");
 // var quizChoicesElement = document.querySelector("#quizChoices");
 var questionDiv = document.createElement("div");
 var buttonDiv = document.createElement("div");
-var resultP = document.createElement("p");
 var remainTimeElement = document.querySelector("#remainTime");
 var resultDisplayElement = document.querySelector("#resultDisplay");
+var completedQuizElement = document.querySelector("#completedQuiz");
+
 
 
 // Create questions for the quiz (arrays)
@@ -45,19 +46,30 @@ var quizQuestions = [
 ];
 
 // Setup timer
-
-var countdown = quizQuestions.length * 10;
+var countdown = quizQuestions.length * 5;
 var quizStarted = false;
 var timer = setInterval(function () {
+    // When quiz starts the tiemr will begin
     if (quizStarted) {
         countdown--;
         remainTimeElement.textContent = "Time remaining = " + countdown + " seconds";
+        // Once the timer runs out clear all the elements 
         if (countdown <= 0) {
             clearInterval(timer);
             questionDiv.innerHTML = "";
             buttonDiv.innerHTML = "";
             resultDisplayElement.innerHTML = "";
-            remainTimeElement.textContent;
+            // Display
+            remainTimeElement.textContent = "Time remaining =  Time is up!";
+            completedQuizElement.textContent = ("Sorry you have ran out of time! You answered " + correctScore + " question(s) correctly!");
+            var retryBtn = document.createElement("button");
+            retryBtn.setAttribute("class", "retry-button");
+            retryBtn.setAttribute("style", "background: rgb(142, 159, 177); padding: 15px; color: white; margin: 25px 15px")
+            retryBtn.textContent = "Try Again!";
+            completedQuizElement.appendChild(retryBtn);
+            retryBtn.addEventListener("click", function () {
+                window.location.href = "index.html";
+            })
 
         }
     }
@@ -104,16 +116,15 @@ function genQuiz() {
                 questionDiv.innerHTML = "";
                 buttonDiv.innerHTML = "";
                 introPage.appendChild(resultP);
-                resultP.textContent = ("Your previous selection was correct!");
                 resultDisplayElement.textContent = ("The previous answer was correct!");
             }
+            // If the user selects incorrectly remove 10 seconds off the time
             else {
                 countdown = countdown - 10;
                 questionsIndex++;
                 questionDiv.innerHTML = "";
                 buttonDiv.innerHTML = "";
                 introPage.appendChild(resultP);
-                resultP.textContent = ("Your previous selection was incorrect.")
                 resultDisplayElement.textContent = ("The previous answer was incorrect.");
             }
             if (questionsIndex >= quizQuestions.length) {
