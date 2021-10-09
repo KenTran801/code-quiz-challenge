@@ -2,7 +2,7 @@
 var questionsIndex = 0;
 var correctScore = 0;
 var startQuiz = document.querySelector("#startQuizBtn");
-var quizQuestionsElement = document.querySelector("#quizQuestions");
+var quizQuestionsElement = document.querySelector("#quiz-questions");
 var quizChoicesElement = document.querySelector("#quizChoices");
 var questionDiv = document.createElement("div");
 var buttonDiv = document.createElement("div");
@@ -68,7 +68,7 @@ function genQuiz() {
     introPage.innerHTML = "";
     buttonDiv.innerHTML = "";
     // For loop that will pull in all the questions and choices
-    for (let i = 0; i < quizQuestions.length; i++) {
+    for (var i = 0; i < quizQuestions.length; i++) {
         var userQuestion = quizQuestions[questionsIndex].questionText;
         var userOptions = quizQuestions[questionsIndex].answerOptions;
         quizQuestionsElement.innerHTML = userQuestion;
@@ -106,6 +106,8 @@ function genQuiz() {
             if (questionsIndex >= quizQuestions.length) {
                 quizQuestionsElement.innerHTML = "";
                 quizChoicesElement.innerHTML = "";
+            } else {
+                genQuiz();
             }
         });
     });
