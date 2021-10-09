@@ -1,4 +1,3 @@
-
 // Create questions for the quiz (arrays)
 var quizQuestions = [
     {
@@ -54,12 +53,12 @@ function genQuiz() {
     for (let i = 0; i < quizQuestions.length; i++) {
         var userQuestion = quizQuestions[questionsIndex].questionText;
         var userOptions = quizQuestions[questionsIndex].answerOptions;
-        introPage.innerHTML = userQuestion;
-        // var questionHeader = document.createElement("h1");
-        // questionHeader.textContent(userQuestion);
-        // introPage.innerHTML = questionHeader;
     };
-    
+    // Ading elements to the question text
+    questionHeader = document.createElement("h1");
+    questionHeader.textContent = userQuestion;
+    introPage.appendChild(questionDiv);
+    questionDiv.appendChild(questionHeader);
     // Create the buttons that will contain the answer options from the array
     userOptions.forEach(function (newBtn) {
         var buttonOption = document.createElement("button");
@@ -69,4 +68,6 @@ function genQuiz() {
         introPage.appendChild(buttonDiv);
         buttonDiv.appendChild(buttonOption);
     });
+    // Adding click event for each button to check if the suer was correct/incorrect
+    // document.querySelector(".answer-option-btn")
 };
