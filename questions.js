@@ -2,8 +2,8 @@
 var questionsIndex = 0;
 var correctScore = 0;
 var startQuiz = document.querySelector("#startQuizBtn");
-var quizQuestionsElement = document.querySelector("#quiz-questions");
-var quizChoicesElement = document.querySelector("#quizChoices");
+// var quizQuestionsElement = document.querySelector("#quiz-questions");
+// var quizChoicesElement = document.querySelector("#quizChoices");
 var questionDiv = document.createElement("div");
 var buttonDiv = document.createElement("div");
 var resultDiv = document.createElement("div");
@@ -48,13 +48,13 @@ var countdown = quizQuestions.length * 10;
 var quizStarted = false;
 var timer = setInterval(function () {
     if (quizStarted) {
-        countdown --;
+        countdown--;
         remainTimeElement.textContent = "Time remaining = " + countdown + " seconds";
         if (countdown <= 0) {
             clearInterval(timer);
-            
+
         }
-    }  
+    }
 }, 1000);
 
 // When start button is clicked begin quiz
@@ -71,20 +71,20 @@ function genQuiz() {
     for (var i = 0; i < quizQuestions.length; i++) {
         var userQuestion = quizQuestions[questionsIndex].questionText;
         var userOptions = quizQuestions[questionsIndex].answerOptions;
-        quizQuestionsElement.innerHTML = userQuestion;
+        // quizQuestionsElement.innerHTML = userQuestion;
     };
     // Adding elements to the question text
-    // questionHeader = document.createElement("h1");
-    // questionHeader.textContent = userQuestion;
-    // introPage.appendChild(questionDiv);
-    // questionDiv.appendChild(questionHeader);
+    questionHeader = document.createElement("h1");
+    questionHeader.textContent = userQuestion;
+    introPage.appendChild(questionDiv);
+    questionDiv.appendChild(questionHeader);
     // Create the buttons that will contain the answer options from the array
     userOptions.forEach(function (newBtn) {
         var buttonOption = document.createElement("button");
         buttonOption.setAttribute("class", "answer-option-btn");
         buttonOption.setAttribute("style", "background: rgb(142, 159, 177); padding: 15px; color: white; margin: 25px 15px");
         buttonOption.textContent = newBtn;
-        quizChoicesElement.appendChild(buttonDiv);
+        introPage.appendChild(buttonDiv);
         buttonDiv.appendChild(buttonOption);
     });
     // Adding click event for each button to check if the user was correct/incorrect
@@ -93,19 +93,19 @@ function genQuiz() {
             let userSelection = verifyAnswer.innerText;
             // Verify if the user selects the correct asnwer
             if (userSelection === quizQuestions[questionsIndex].correctAnswer) {
-                console.log(quizQuestions[questionsIndex].questionText);
-                console.log(userSelection);
-                console.log(quizQuestions[questionsIndex].correctAnswer);
                 questionsIndex++;
-                console.log(quizQuestions[questionsIndex].questionText);
+                questionDiv.innerHTML = "";
+                buttonDiv.innerHTML = "";
             }
             else {
                 countdown = countdown - 10;
                 questionsIndex++;
+                questionDiv.innerHTML = "";
+                buttonDiv.innerHTML = "";
             }
             if (questionsIndex >= quizQuestions.length) {
-                quizQuestionsElement.innerHTML = "";
-                quizChoicesElement.innerHTML = "";
+                questionDiv.innerHTML = "";
+                buttonDiv.innerHTML = "";
             } else {
                 genQuiz();
             }
