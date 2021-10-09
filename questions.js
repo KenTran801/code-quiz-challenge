@@ -1,6 +1,7 @@
 // Create variables
 var questionsIndex = 0;
 var correctScore = 0;
+var totalScore = 0;
 var startQuiz = document.querySelector("#startQuizBtn");
 var questionDiv = document.createElement("div");
 var buttonDiv = document.createElement("div");
@@ -65,7 +66,6 @@ var timer = setInterval(function () {
             retryBtn.addEventListener("click", function () {
                 window.location.href = "index.html";
             })
-
         }
     }
 }, 1000);
@@ -127,6 +127,18 @@ function genQuiz() {
                 remainTimeElement.textContent = "";
                 // Message for user when quiz has been completed successfully and display how many correct asnwers
                 completedQuizElement.textContent = ("The quiz has been completed! You answered " + correctScore + " questions correctly.");
+                // Stop the timer for users final score
+                clearInterval(timer);
+                // User score = the timer count
+                totalScore = countdown;
+                // create message to display score
+                var scoreBoard = document.createElement("h2");
+                scoreBoard.setAttribute("id", "scoreBoard");
+                scoreBoard.setAttribute("style", "color: white; font-weight: bold; padding: 25px");
+                scoreBoard.textContent =("Your final score is " + totalScore);
+                completedQuizElement.appendChild(scoreBoard);
+
+
             } else {
                 genQuiz();
             }
