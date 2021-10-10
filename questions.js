@@ -160,7 +160,20 @@ function genQuiz() {
                     if (userName === "") {
                         alert("Invalid name, field cannot be blank.")
                         return false;
-                    }
+                    } else {
+                        // Scores from locale storage or the empty array
+                        var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+                        // Adding in the current user & score
+                        var scoreResults = {
+                            score: totalScore,
+                            name: userName
+                        };
+                        // push the user & score to locale storage
+                        highScores.push(scoreResults);
+                        window.localStorage.setItem("highScores", JSON.stringify(highScores));
+                    } console.log(highScores)
+                    // redirect user to new page
+                    window.location.href = "highscore.html";
                 })
             } else {
                 genQuiz();
