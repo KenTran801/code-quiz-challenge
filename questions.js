@@ -9,7 +9,6 @@ var remainTimeElement = document.querySelector("#remainTime");
 var resultDisplayElement = document.querySelector("#resultDisplay");
 var completedQuizElement = document.querySelector("#completedQuiz");
 var enterNameElement = document.querySelector("#enterNameDisplay");
-
 // Create questions for the quiz (arrays)
 var quizQuestions = [
     {
@@ -157,12 +156,11 @@ function genQuiz() {
                 submitNameBtn.addEventListener("click", function () {
                     // variable attached to user name
                     var userName = nameInput.value.trim();
-                    // alert user field if fiedl is invalid
+                    // alert user field if field is invalid
                     if (userName === "") {
                         alert("Invalid name, field cannot be blank.")
                         return false;
                     }
-                    console.log(userName)
                 })
             } else {
                 genQuiz();
