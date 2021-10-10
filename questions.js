@@ -41,7 +41,6 @@ var quizQuestions = [
         correctAnswer: "Console log"
     },
 ];
-
 // Setup timer
 var countdown = quizQuestions.length * 10;
 var quizStarted = false;

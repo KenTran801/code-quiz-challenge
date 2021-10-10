@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>highscores</title>
+    <title>Highscores</title>
+
+    <!-- Link for Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
-<body>
-    TEST
+
+<body style="background-color: rgb(142, 159, 177);">
+    <!-- navbar that will contain link to highscores and display countdown -->
+    <header class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-white" href="index.html">Take Code Quiz</a>
+            <div class="justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <span class="navbar-text font-weight-bold text-danger" id="remainTime">
+                        Time Remaining
+                    </span>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Container that will contain questions/answers generated from javascript -->
+    <main class="container-fluid my-5">
+        <div class="p-5 bg-dark border rounded-4 text-white text-center">
+            <div id="introPage">
+                <h1 class="display-4">Top Highscores</h1>
+                <hr class="my-5">
+                <button type="button" class="btn btn-outline-light" id="returnQuiz">Return to Quiz</button>
+                <button type="button" class="btn btn-outline-light" id="clearScores">Clear Highscores</button>
+            </div>
+        </div>
+    </main>
+    <script src="questions.js"></script>
 </body>
 </html>
