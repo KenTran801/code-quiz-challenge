@@ -136,7 +136,7 @@ function genQuiz() {
                 // create message to display score
                 var scoreDisplay = document.createElement("h2");
                 scoreDisplay.setAttribute("id", "score-display");
-                scoreDisplay.setAttribute("style", "color: white; font-weight: bold; padding: 25px");
+                scoreDisplay.setAttribute("style", "color: #13e71e; font-weight: bold; padding: 25px");
                 scoreDisplay.textContent =("Your final score is " + totalScore);
                 completedQuizElement.appendChild(scoreDisplay);
                 // Create form field to allow user to input name or initals
@@ -146,10 +146,12 @@ function genQuiz() {
                 nameInput.setAttribute("type", "text");
                 nameInput.textContent = "";
                 enterNameElement.appendChild(nameInput);
-
-
                 // create button to submit the name or initials
-
+                var submitNameBtn = document.createElement("button");
+                submitNameBtn.setAttribute("class", "submit-name-btn");
+                submitNameBtn.setAttribute("style", "background: rgb(142, 159, 177); padding: 15px; color: white; margin: 2px 10px");
+                submitNameBtn.textContent = "Submit";
+                enterNameElement.appendChild(submitNameBtn);
             } else {
                 genQuiz();
             }
