@@ -57,21 +57,22 @@ var timer = setInterval(function () {
             questionDiv.innerHTML = "";
             buttonDiv.innerHTML = "";
             resultDisplayElement.innerHTML = "";
-            // Display
+            // Display message if time is up
             remainTimeElement.textContent = "Time remaining =  Time is up!";
             completedQuizElement.textContent = ("Sorry you have ran out of time! You answered " + correctScore + " question(s) correctly!");
+            // add in button to rety/restart quiz once time is up
             var retryBtn = document.createElement("button");
             retryBtn.setAttribute("class", "retry-button");
             retryBtn.setAttribute("style", "background: rgb(142, 159, 177); padding: 15px; color: white; margin: 25px 15px")
             retryBtn.textContent = "Try Again!";
             completedQuizElement.appendChild(retryBtn);
+            // redirects user to beginning page of quiz
             retryBtn.addEventListener("click", function () {
                 window.location.href = "index.html";
             })
         }
     }
 }, 1000);
-
 // When start button is clicked begin quiz
 startQuiz.addEventListener("click", function () {
     quizStarted = true;
@@ -139,7 +140,7 @@ function genQuiz() {
                 scoreDisplay.setAttribute("style", "color: #13e71e; font-weight: bold; padding: 25px");
                 scoreDisplay.textContent =("Your final score is " + totalScore);
                 completedQuizElement.appendChild(scoreDisplay);
-                // Create form field to allow user to input name or initals
+                // Create inputs field to allow user to input name or initals
                 enterNameElement.textContent = ("Please enter in your initials: ");
                 var nameInput = document.createElement("input");
                 nameInput.setAttribute("id", "name-input");
@@ -152,6 +153,17 @@ function genQuiz() {
                 submitNameBtn.setAttribute("style", "background: rgb(142, 159, 177); padding: 15px; color: white; margin: 2px 10px");
                 submitNameBtn.textContent = "Submit";
                 enterNameElement.appendChild(submitNameBtn);
+                // Adding event listener to submit button for local storage
+                submitNameBtn.addEventListener("click", function () {
+                    // variable attached to user name
+                    var userName = nameInput.value.trim();
+                    // alert user field if fiedl is invalid
+                    if (userName === "") {
+                        alert("Invalid name, field cannot be blank.")
+                        return false;
+                    }
+                    console.log(userName)
+                })
             } else {
                 genQuiz();
             }
