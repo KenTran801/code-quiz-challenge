@@ -170,7 +170,7 @@ function genQuiz() {
                         // push the user & score to locale storage
                         highScores.push(scoreResults);
                         window.localStorage.setItem("highScores", JSON.stringify(highScores));
-                    } console.log(highScores)
+                    } 
                     // redirect user to new page
                     window.location.href = "highscore.html";
                 })
