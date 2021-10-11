@@ -19,25 +19,26 @@
         <div class="container-fluid">
             <a class="navbar-brand fw-bold text-white" href="index.html">Take Code Quiz</a>
             <div class="justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <span class="navbar-text font-weight-bold text-danger" id="remainTime">
-                        Time Remaining
-                    </span>
-                </ul>
             </div>
         </div>
     </header>
     <!-- Container that will contain questions/answers generated from javascript -->
     <main class="container-fluid my-5">
         <div class="p-5 bg-dark border rounded-4 text-white text-center">
-            <div id="introPage">
+            <div>
                 <h1 class="display-4">Top Highscores</h1>
                 <hr class="my-5">
-                <button type="button" class="btn btn-outline-light" id="returnQuiz">Return to Quiz</button>
-                <button type="button" class="btn btn-outline-light" id="clearScores">Clear Highscores</button>
+                <section class="col-sm-12 text-center">
+                    <section class="row justify-content-center">
+                        <ol class="col-1 text-center" id="display-highscores"></ol>
+                    </section>
+                </section>
+                <button type="button" class="btn btn-outline-light" id="return-quiz">Return to Quiz</button>
+                <button type="button" class="btn btn-outline-light" id="clear-scores">Clear Highscores</button>
             </div>
         </div>
     </main>
-    <script src="questions.js"></script>
+    <script src="highscore.js"></script>
 </body>
+
 </html>
