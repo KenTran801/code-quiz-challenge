@@ -8,6 +8,22 @@ returnQuizBtn.addEventListener("click", function () {
 });
 // Button that will clear scores in local storage/html
 clearScoresBtn.addEventListener("click", function () {
-    highscoreEl.innerHTML = "";
+    highscoreDisplay.innerHTML = "";
     localStorage.removeItem("highScores")
 });
+// Get the scores/names from local storage
+var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+if (highScores !== "") {
+    // Rank the scores from highest to lowest, help from tutor/BCS learning
+    highScores.sort(function (a, b) {
+        return parseInt(b.score) - parseInt(a.score);
+    });
+    // loop to pull in scores/names
+    for (let i = 0; i < highScores.length; i++) {
+        var scoreList = document.createElement("li");
+        scoreList.setAttribute("class", "scoreList");
+        scoreList.setAttribute("style", "font-weight: bold; padding: 5px")
+        scoreList.textContent = highScores[i].name + " " + highScores[i].score;
+        highscoreDisplay.appendChild(scoreList);
+    };
+}
